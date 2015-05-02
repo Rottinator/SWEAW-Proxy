@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
+#include <string> 
 #include "../../SocketLibrary/SocketLibrary/SocketLibrary.h"
 
 #define GAME_PORT 1234
@@ -31,13 +32,13 @@ void InitServerDataClient();
 
 int main()
 {
-	//printf("Server-IP: ");
-	//scanf("%s", &serverIp);
-	//getchar();
+	printf("Server-IP: ");
+	scanf("%s", &serverIp);
+	getchar();
 
-	//printf("Lokale-IP: ");
-	//scanf("%s", &localIp);
-	//getchar();	
+	printf("Lokale-IP: ");
+	scanf("%s", &localIp);
+	getchar();	
 
 	InitSocketLibrary();
 
@@ -46,8 +47,6 @@ int main()
 	InitServerBroadcastClient();
 	InitServerDataClient();	
 	
-	CleanupSocketLibrary();
-
 	while(true)
 	{
 		SleepMilliseconds(1000);
@@ -58,16 +57,20 @@ int main()
 
 void ReceiveLocalBroadcast(char* data, int length, char* address, unsigned short port)
 {
-	serverBroadcastClient->Send(data, length);
+	printf("Broadcast von SW-Client erhalten\n");
+	if(port == GAME_PORT && strcmp(address, localIp) == 0)
+	{
+		serverBroadcastClient->Send(data, length);
+	}
+	
 	delete data;
-	delete address;
 }
 
 void ReceiveLocalData(char* data, int length, char* address, unsigned short port)
 {
+	printf("Daten von SW-Client erhalten\n");
 	serverDataClient->Send(data, length);
 	delete data;
-	delete address;
 }
 
 void ReceiveServerBroadcast(char* data, int length)
@@ -78,6 +81,7 @@ void ReceiveServerBroadcast(char* data, int length)
 
 void ReceiveServerData(char* data, int length)
 {
+	printf("Daten vom Server erhalten\n");
 	localDataClient->SendTo(data, length, localIp, GAME_PORT);
 	delete data;
 }
@@ -119,7 +123,7 @@ void InitLocalDataClient()
 void InitServerBroadcastClient()
 {
 	serverBroadcastClient = new TcpClient();
-	bool success = serverBroadcastClient->Connect("192.168.2.143", 5001);
+	bool success = serverBroadcastClient->Connect(localIp, 5001);
 	if(success) 
 	{
 		printf("Broadcast-Client erfolgreich mit dem Server verbunden\n");
@@ -136,7 +140,7 @@ void InitServerBroadcastClient()
 void InitServerDataClient()
 {
 	serverDataClient = new TcpClient();
-	bool success = serverDataClient->Connect("127.0.0.1", SERVER_DATA_PORT);
+	bool success = serverDataClient->Connect(serverIp, SERVER_DATA_PORT);
 	if(success) 
 	{
 		printf("Data-Client erfolgreich mit dem Server verbunden\n");

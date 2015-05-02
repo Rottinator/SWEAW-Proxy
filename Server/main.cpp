@@ -127,6 +127,7 @@ void OnDataReceive1(char* data, int length)
 {
 	if(dataClient2 != NULL)
 	{
+		printf("Daten von Clien1 erhalten\n");
 		dataClient2->Send(data, length);
 	}
 
@@ -135,6 +136,7 @@ void OnDataReceive1(char* data, int length)
 
 void OnDataReceive2(char* data, int length)
 {
+	printf("Daten von Clien2 erhalten\n");
 	dataClient1->Send(data, length);
 
 	delete data;
