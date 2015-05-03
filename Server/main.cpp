@@ -48,7 +48,11 @@ void InitBroadcastListener()
 	if(success == true) 
 	{
 		printf("Broadcast-Listener erfolgreich initialisiert\n");
-		broadcastListener->StartListening(OnBroadcastClientAccepted);
+		success = broadcastListener->StartListening(OnBroadcastClientAccepted);
+		if(success == false)
+		{
+			printf("Fehler beim Listen des Broadcast-Listeners\n");
+		}
 	}
 	else
 	{
@@ -63,7 +67,11 @@ void InitDataListener()
 	if(success == true) 
 	{
 		printf("Data-Listener erfolgreich initialisiert\n");
-		dataListener->StartListening(OnDataClientAccepted);
+		success = dataListener->StartListening(OnDataClientAccepted);
+		if(success == false)
+		{
+			printf("Fehler beim Listen des Data-Listeners\n");
+		}
 	}
 	else
 	{
