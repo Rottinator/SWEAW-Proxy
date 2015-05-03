@@ -92,6 +92,7 @@ void OnBroadcastReceive1(char* data, int length)
 {
 	if(broadcastClient2 != NULL)
 	{
+		printf("Broadcast von Client-1 erhalten\n");
 		broadcastClient2->Send(data, length);
 	}
 
@@ -100,6 +101,7 @@ void OnBroadcastReceive1(char* data, int length)
 
 void OnBroadcastReceive2(char* data, int length)
 {
+	printf("Broadcast von Client-2 erhalten\n");
 	broadcastClient1->Send(data, length);
 
 	delete data;
@@ -108,7 +110,6 @@ void OnBroadcastReceive2(char* data, int length)
 
 void OnDataClientAccepted(TcpClient* client)
 {
-	
 	if(dataClient1 == NULL)
 	{
 		printf("Data-Client-1 hat sich verbunden\n");
@@ -127,7 +128,7 @@ void OnDataReceive1(char* data, int length)
 {
 	if(dataClient2 != NULL)
 	{
-		printf("Daten von Clien1 erhalten\n");
+		printf("Daten von Client-1 erhalten\n");
 		dataClient2->Send(data, length);
 	}
 
@@ -136,7 +137,7 @@ void OnDataReceive1(char* data, int length)
 
 void OnDataReceive2(char* data, int length)
 {
-	printf("Daten von Clien2 erhalten\n");
+	printf("Daten von Client-2 erhalten\n");
 	dataClient1->Send(data, length);
 
 	delete data;
