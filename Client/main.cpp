@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <string> 
-#include "../../SocketLibrary/SocketLibrary/SocketLibrary.h"
+#include "../../Base.h/Base/base.h"
 
 #define GAME_PORT 1234
 
@@ -10,6 +10,7 @@
 #define SERVER_DATA_PORT 5002
 
 using namespace std;
+using namespace Base::Sockets;
 
 UdpClient* localBroadcastClient;
 UdpClient* localDataClient;

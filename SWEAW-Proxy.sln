@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "Server\Server.vcxproj", "{90F2F06C-46C6-4651-B651-08EB09F65355}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client", "Client\Client.vcxproj", "{FA20DC3C-714E-4C01-BCCC-2DB92E6C7732}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base.h", "Base.h", "{AFC9B26D-815D-43A4-932E-C1F505181AF8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Base", "..\Base.h\Base\Base.vcxproj", "{4DF43032-C56C-46AA-86AC-60131DA7F9C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,8 +25,15 @@ Global
 		{FA20DC3C-714E-4C01-BCCC-2DB92E6C7732}.Debug|Win32.Build.0 = Debug|Win32
 		{FA20DC3C-714E-4C01-BCCC-2DB92E6C7732}.Release|Win32.ActiveCfg = Release|Win32
 		{FA20DC3C-714E-4C01-BCCC-2DB92E6C7732}.Release|Win32.Build.0 = Release|Win32
+		{4DF43032-C56C-46AA-86AC-60131DA7F9C6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4DF43032-C56C-46AA-86AC-60131DA7F9C6}.Debug|Win32.Build.0 = Debug|Win32
+		{4DF43032-C56C-46AA-86AC-60131DA7F9C6}.Release|Win32.ActiveCfg = Release|Win32
+		{4DF43032-C56C-46AA-86AC-60131DA7F9C6}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4DF43032-C56C-46AA-86AC-60131DA7F9C6} = {AFC9B26D-815D-43A4-932E-C1F505181AF8}
 	EndGlobalSection
 EndGlobal

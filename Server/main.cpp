@@ -2,12 +2,13 @@
 #include <cstdlib>
 #include <cstdio>
 
-#include "../../SocketLibrary/SocketLibrary/SocketLibrary.h"
+#include "../../Base.h/Base/base.h"
 
 #define BROADCAST_PORT 5001
 #define DATA_PORT 5002
 
 using namespace std;
+using namespace Base::Sockets;
 
 TcpListener* broadcastListener;
 TcpListener* dataListener;
